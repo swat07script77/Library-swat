@@ -1,0 +1,144 @@
+
+--[[
+    EXEMPLO COMPLETO - SwatUI
+    Mostra como usar TODOS os elementos
+]]
+
+local SwatUI = loadstring(game:HttpGet("https://gist.githubusercontent.com/swat07script77/ad6fde2ff09061d913c42daf908621b7/raw/975c798cc90fab722f774364f7c3df1837d462fa/Swatui%2520v3"))()
+local Menu = SwatUI:CreateWindow("Meu Script")
+
+
+
+-- ═══════════════════════════════════════════
+-- ABA 1: MAIN
+-- ═══════════════════════════════════════════
+local MainTab = Menu:CreateTab("Main", "rbxassetid://107150227368485")
+
+MainTab:CreateSection("Ações")
+MainTab:CreateLabel("Bem-vindo!")
+
+MainTab:CreateButton({
+    Title = "Botão Simples",
+    Callback = function()
+        print("Clicou!")
+    end
+})
+
+MainTab:CreateButton({
+    Title = "Botão com Ícone",
+    Icon = "rbxassetid://107150227368485",
+    IconColor = Color3.fromRGB(80, 210, 130),
+    Callback = function()
+        print("Clicou com ícone!")
+    end
+})
+
+MainTab:CreateToggle({
+    Title = "Fly",
+    Icon = "rbxassetid://134243273101015",
+    Default = false,
+    Callback = function(v)
+        print("Fly:", v)
+    end
+})
+
+MainTab:CreateSlider({
+    Title = "Velocidade",
+    Icon = "rbxassetid://107150227368485",
+    Min = 16,
+    Max = 200,
+    Default = 16,
+    Callback = function(v)
+        print("Velocidade:", v)
+    end
+})
+
+MainTab:CreateDropdown({
+    Title = "Time",
+    Options = {"Vermelho", "Azul", "Verde"},
+    Default = "Vermelho",
+    Callback = function(op)
+        print("Time:", op)
+    end
+})
+
+MainTab:CreateTextBox({
+    Title = "Nome",
+    Placeholder = "Digite...",
+    Callback = function(txt)
+        print("Nome:", txt)
+    end
+})
+
+MainTab:CreateKeybind({
+    Title = "Tecla TP",
+    Default = "T",
+    Callback = function(k)
+        print("Tecla:", k)
+    end
+})
+
+-- ═══════════════════════════════════════════
+-- ABA 2: VISUAL
+-- ═══════════════════════════════════════════
+local VisualTab = Menu:CreateTab("Visual", "rbxassetid://107150227368485")
+
+VisualTab:CreateSection("Cores")
+
+VisualTab:CreateColorPicker({
+    Title = "Cor do ESP",
+    Default = Color3.fromRGB(255, 0, 0),
+    Callback = function(c)
+        print("Cor:", c)
+    end
+})
+
+VisualTab:CreateColorPicker({
+    Title = "Cor do Menu",
+    Default = Color3.fromRGB(90, 160, 255),
+    ThemeKey = "Accent",
+    Callback = function(c)
+        print("Accent:", c)
+    end
+})
+
+-- ═══════════════════════════════════════════
+-- ABA 3: SETTINGS
+-- ═══════════════════════════════════════════
+local SettingsTab = Menu:CreateTab("Settings", "rbxassetid://134243273101015")
+
+SettingsTab:CreateSection("Interface")
+
+SettingsTab:CreateFontPicker({
+    Title = "Fonte do Menu",
+    Target = "ElementFont",
+    Callback = function(f)
+        print("Fonte:", f)
+    end
+})
+
+SettingsTab:CreateThemePreset({
+    Title = "Tema",
+    Callback = function(p)
+        print("Tema:", p.Name)
+    end
+})
+
+SettingsTab:CreateSection("Outros")
+
+SettingsTab:CreateButton({
+    Title = "Fechar Menu",
+    Callback = function()
+        Menu:Close()
+    end
+})
+
+-- ═══════════════════════════════════════════
+-- NOTIFICAÇÃO
+-- ═══════════════════════════════════════════
+Menu:Notify({
+    Title = "Pronto!",
+    Description = "Menu carregado com sucesso!",
+    Duration = 3,
+    Type = "success"
+})
