@@ -1,0 +1,218 @@
+-- ============================================================
+-- SWATUI — COMPLETE GUIDE (All in English)
+-- ============================================================
+
+-- 1. LOAD LIBRARY
+local SwatUI = loadstring(game:HttpGet("URL of swat"))()
+
+-- 2. CREATE WINDOW
+local Window = SwatUI:CreateWindow("My Script")
+
+-- ============================================================
+-- TABS (Create as many as you want)
+-- The first tab created is automatically selected.
+-- ============================================================
+local MainTab   = Window:CreateTab("Main")
+local VisualTab = Window:CreateTab("Visual")
+local MiscTab   = Window:CreateTab("Misc")
+
+-- ============================================================
+-- SECTION — visual divider (does nothing on click)
+-- ============================================================
+MainTab:CreateSection("Player")
+
+-- ============================================================
+-- BUTTON — clickable, runs Callback()
+-- ============================================================
+MainTab:CreateButton({
+    Title = "Reset Character",
+    Callback = function()
+        game.Players.LocalPlayer.Character:BreakJoints()
+    end,
+})
+
+-- Methods:
+-- btn:SetTitle("New name")
+-- btn:SetIcon("rbxassetid://123456")
+-- btn:SetVisible(false)
+-- btn:Destroy()
+
+-- ============================================================
+-- TOGGLE — receives true / false
+-- ============================================================
+MainTab:CreateToggle({
+    Title = "Infinite Jump",
+    Default = false,
+    Callback = function(state)
+        _G.InfiniteJump = state
+    end,
+})
+
+-- Methods:
+-- toggle:SetValue(true)
+-- toggle:GetValue()
+
+-- ============================================================
+-- SLIDER — receives a number between Min and Max
+-- ============================================================
+MainTab:CreateSlider({
+    Title = "WalkSpeed",
+    Min = 16,
+    Max = 200,
+    Default = 16,
+    Callback = function(value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+    end,
+})
+
+-- Methods:
+-- slider:SetValue(100)
+-- slider:GetValue()
+
+-- ============================================================
+-- TEXTBOX — receives a string
+-- ============================================================
+MainTab:CreateTextBox({
+    Title = "Player Name",
+    Placeholder = "Type here...",
+    Default = "",
+    Callback = function(text, enterPressed)
+        print("Text:", text)
+    end,
+})
+
+-- Methods:
+-- textbox:SetText("Hello")
+-- textbox:GetText()
+
+-- ============================================================
+-- DROPDOWN — pick one option from a list
+-- ============================================================
+MainTab:CreateDropdown({
+    Title = "Mode",
+    Options = { "Normal", "Fast", "Stealth" },
+    Default = "Normal",
+    Callback = function(selected)
+        print("Selected:", selected)
+    end,
+})
+
+-- Methods:
+-- dropdown:Set("Fast")
+-- dropdown:GetSelected()
+-- dropdown:GetOptions()
+-- dropdown:AddOption("Turbo")
+-- dropdown:RemoveOption("Normal")
+-- dropdown:Open()
+-- dropdown:Close()
+
+-- ============================================================
+-- COLORPICKER — receives a Color3
+-- ============================================================
+VisualTab:CreateColorPicker({
+    Title = "ESP Color",
+    Default = Color3.fromRGB(255, 0, 0),
+    Callback = function(color)
+        _G.ESPColor = color
+    end,
+})
+
+-- Methods:
+-- picker:SetColor(Color3.fromRGB(0, 255, 0))
+-- picker:GetColor()
+-- picker:Open()
+-- picker:Close()
+
+-- ============================================================
+-- KEYBIND — captures a key press from the user
+-- ============================================================
+MiscTab:CreateKeybind({
+    Title = "Reset Key",
+    Default = "R",
+    Callback = function(key)
+        print("Key:", key)   -- "R", "Q", "Mouse1", "Touch"
+    end,
+})
+
+-- Methods:
+-- keybind:SetKey("E")
+-- keybind:GetKey()
+
+-- ============================================================
+-- FONTPICKER — cycles through fonts
+-- Target: "ElementFont" or "TitleFont"
+-- ============================================================
+MiscTab:CreateFontPicker({
+    Title = "UI Font",
+    Target = "ElementFont",
+    Callback = function(font)
+        print("Font:", font.Name)
+    end,
+})
+
+-- Methods:
+-- fontPicker:SetFont(Enum.Font.Bangers)
+
+-- ============================================================
+-- THEMEPRESET — cycles through theme presets
+-- ============================================================
+MiscTab:CreateThemePreset({
+    Title = "Theme",
+    Callback = function(preset)
+        print("Theme:", preset.Name)
+    end,
+})
+
+-- ============================================================
+-- LABEL — plain text
+-- ============================================================
+MainTab:CreateLabel("Welcome to the script!")
+
+-- Methods:
+-- label:SetTitle("New text")
+-- label:SetTextColor(Color3.new(0, 1, 0))
+-- label:SetFont(Enum.Font.Code)
+
+-- ============================================================
+-- NOTIFICATION — popup message
+-- Type: "success" | "warning" | "error" | "info"
+-- ============================================================
+Window:Notify({
+    Title = "Success",
+    Description = "Script loaded!",
+    Duration = 3,
+    Type = "success",
+})
+
+-- ============================================================
+-- WINDOW GLOBAL METHODS
+-- ============================================================
+-- Window:SetBackgroundTransparency(20)     -- 0..100
+-- Window:SetElementScale(1.2)              -- 0.7..1.5
+-- Window:SetFontScale(1.1)                 -- 0.7..1.5
+-- Window:SetToggleKey("RightShift")        -- key to hide/show menu
+-- Window:SetMenuHidden(true)               -- hide the menu
+-- Window:ApplyThemeColor("Purple")         -- change theme color
+-- Window:ResetAllSettings()
+-- Window:SetAllColor(Color3.new(1, 0, 0))  -- apply to every element
+-- Window:SetAllFont(Enum.Font.Code)
+-- Window:SetAllVisible(false)
+
+-- ============================================================
+-- QUICK REFERENCE TABLE
+-- ============================================================
+-- | Element      | Method                             | Returns  |
+-- |--------------|------------------------------------|----------|
+-- | Tab          | Window:CreateTab("Name")           | Tab      |
+-- | Section      | Tab:CreateSection("Title")         | Frame    |
+-- | Button       | Tab:CreateButton({...})            | Object   |
+-- | Toggle       | Tab:CreateToggle({...})            | Object   |
+-- | Slider       | Tab:CreateSlider({...})            | Object   |
+-- | TextBox      | Tab:CreateTextBox({...})           | Object   |
+-- | Dropdown     | Tab:CreateDropdown({...})          | Object   |
+-- | ColorPicker  | Tab:CreateColorPicker({...})       | Object   |
+-- | Keybind      | Tab:CreateKeybind({...})           | Object   |
+-- | FontPicker   | Tab:CreateFontPicker({...})        | Object   |
+-- | ThemePreset  | Tab:CreateThemePreset({...})       | Object   |
+-- | Label        | Tab:CreateLabel("text")            | Object   |
+-- | Notification | Window:Notify({...})               | Frame    |
