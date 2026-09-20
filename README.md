@@ -1,4 +1,4 @@
-o sistema da ui de Swatui tá ai de como fazer o codigo esse sistema é fácil de fazer 
+The Swatui UI system is there, how to code it; this system is easy to implement. 
 |}}}[]
     ════════════════════════════════════════════════════════════════
         SwatUI - Roblox UI Library
