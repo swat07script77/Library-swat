@@ -1,10 +1,10 @@
-The Swatui UI system is there, how to code it; this system is easy to implement. 
-|}}}[]
-    ════════════════════════════════════════════════════════════════
-        SwatUI - Roblox UI Library
-    ════════════════════════════════════════════════════════════════
+The Swatui UI system is there, how to code it; this system is easy to implement.  
+Warning
+swatui qualquer bugs encontrado é só falar no server do Discord
+• https://discord.gg/G8J3k2nB34
 
-    ## STRUCTURE
+
+não Copy esse code ele não vai funcionar 
 
     swatui/
     ├── README.md
@@ -23,8 +23,9 @@ The Swatui UI system is there, how to code it; this system is easy to implement.
         ├── API.md
         ├── THEMES.md
         └── ICONS.md
-
+/
     ## HOW TO USE
+
 
     1. Load the library:
         local SwatUI = loadstring(game:HttpGet("https://gist.githubusercontent.com/swat07script77/7fbf1e4f7e502565a34396878f9a1dbb/raw/e61324627588f43c647fb838bf2bef2bbe65c1e7/Swatui%2520V2"))()
@@ -34,9 +35,9 @@ The Swatui UI system is there, how to code it; this system is easy to implement.
 
     3. Create a tab:
         local Tab = Window:CreateTab("Name", "home")
-
+/
     4. Add elements inside the tab
-
+/
     ## AVAILABLE ELEMENTS
 
     ### SECTION
