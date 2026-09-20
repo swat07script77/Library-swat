@@ -1,19 +1,39 @@
-# SwatUI
+<!--<h1 align="center">SwatUI</h1> -->
 
-> ⚠️ **WARNING:** Any bugs found — just report them on the Discord server.
-> 🔗 https://discord.gg/G8J3k2nB34
+<div align="center">
+
+<picture>
+  <source srcset="https://img.shields.io/badge/SwatUI-V2.0-ff0000?style=for-the-badge&logo=roblox&logoColor=white" media="(prefers-color-scheme: dark)">
+  <img src="https://img.shields.io/badge/SwatUI-V2.0-ff0000?style=for-the-badge&logo=roblox&logoColor=white" alt="SwatUI Banner">
+</picture>
+
+[![SwatUI Status](https://img.shields.io/badge/Status-Active-ff3333?style=for-the-badge)](https://discord.gg/G8J3k2nB34)
+[![Language](https://img.shields.io/badge/Language-Lua-ff6666?style=for-the-badge&logo=lua&logoColor=white)](https://luau.org)
+
+<p align="center">
+  <b>An easy-to-implement, lightweight, and modern UI library for Roblox script developers.</b>
+</p>
+
+</div>
+
+> [!WARNING]
+> **Beta Notice:** SwatUI is currently in active development. Bugs and unstable features may occur. Please report any issues on our Discord server.
+
+> [!WARNING]
+> **Important:** Do not copy or execute the file structure tree code below in your script execution environment—it is provided for reference only and will throw an error.
 
 ---
 
-**SwatUI** is a lightweight UI system — here's how to code with it. This system is easy to implement.
+# Links
+
+- [Discord Server](https://discord.gg/G8J3k2nB34)
+- [Example Script](https://gist.githubusercontent.com/swat07script77/7fbf1e4f7e502565a34396878f9a1dbb/raw/e61324627588f43c647fb838bf2bef2bbe65c1e7/Swatui%2520V2)
 
 ---
 
-## 📁 Project Structure
+# Project Structure
 
-> **Do not copy this code — it will not work.**
-
-```
+```text
 swatui/
 ├── README.md
 ├── LICENSE
@@ -35,7 +55,7 @@ swatui/
 
 ---
 
-## 🚀 How to Use
+# How to Use
 
 **1. Load the library:**
 
@@ -43,43 +63,43 @@ swatui/
 local SwatUI = loadstring(game:HttpGet("https://gist.githubusercontent.com/swat07script77/7fbf1e4f7e502565a34396878f9a1dbb/raw/e61324627588f43c647fb838bf2bef2bbe65c1e7/Swatui%2520V2"))()
 ```
 
-**2. Create the window:**
+**2. Create the main window:**
 
 ```lua
 local Window = SwatUI:CreateWindow("My Menu")
 ```
 
-**3. Create a tab:**
+**3. Create the main tab:**
 
 ```lua
-local Tab = Window:CreateTab("Name", "home")
+local Tab = Window:CreateTab("Home", "home")
 ```
 
 **4. Add elements inside the tab.**
 
 ---
 
-## 🧩 Available Elements
+# Available Elements
 
 ### Section
 
 ```lua
-Tab:CreateSection("Title")
+Tab:CreateSection("Example Section")
 ```
 
 ### Label
 
 ```lua
-Tab:CreateLabel("Text")
+Tab:CreateLabel("This is an example label")
 ```
 
 ### Button
 
 ```lua
 Tab:CreateButton({
-    Title = "Name",
+    Title = "Example Button",
     Callback = function()
-        print("clicked")
+        print("Button clicked!")
     end,
 })
 ```
@@ -88,10 +108,10 @@ Tab:CreateButton({
 
 ```lua
 Tab:CreateToggle({
-    Title = "Name",
+    Title = "Enable Feature",
     Default = false,
     Callback = function(state)
-        print(state)
+        print("Toggle state:", state)
     end,
 })
 ```
@@ -100,12 +120,12 @@ Tab:CreateToggle({
 
 ```lua
 Tab:CreateSlider({
-    Title = "Name",
+    Title = "Adjust Value",
     Min = 0,
     Max = 100,
     Default = 50,
     Callback = function(value)
-        print(value)
+        print("Slider value:", value)
     end,
 })
 ```
@@ -114,11 +134,11 @@ Tab:CreateSlider({
 
 ```lua
 Tab:CreateDropdown({
-    Title = "Name",
-    Options = {"A", "B", "C"},
-    Default = "A",
+    Title = "Select Option",
+    Options = {"Option A", "Option B", "Option C"},
+    Default = "Option A",
     Callback = function(selected)
-        print(selected)
+        print("Selected option:", selected)
     end,
 })
 ```
@@ -127,11 +147,11 @@ Tab:CreateDropdown({
 
 ```lua
 Tab:CreateTextBox({
-    Title = "Name",
+    Title = "Text Field",
     Placeholder = "Type here...",
     Default = "",
     Callback = function(text)
-        print(text)
+        print("Typed text:", text)
     end,
 })
 ```
@@ -140,10 +160,10 @@ Tab:CreateTextBox({
 
 ```lua
 Tab:CreateKeybind({
-    Title = "Name",
+    Title = "Hotkey",
     Default = "K",
     Callback = function(key)
-        print(key)
+        print("Key pressed:", key)
     end,
 })
 ```
@@ -152,10 +172,10 @@ Tab:CreateKeybind({
 
 ```lua
 Tab:CreateColorPicker({
-    Title = "Name",
+    Title = "Color Picker",
     Default = Color3.fromRGB(255, 0, 0),
     Callback = function(color)
-        print(color)
+        print("Selected color:", color)
     end,
 })
 ```
@@ -164,17 +184,11 @@ Tab:CreateColorPicker({
 
 ```lua
 Window:Notify({
-    Title = "Title",
-    Description = "Description",
+    Title = "Notification",
+    Description = "Menu loaded successfully!",
     Duration = 3,
-    Type = "info",
+    Type = "info", -- Options: "info" | "success" | "warning" | "error"
 })
 ```
 
 **Available types:** `"info"` · `"success"` · `"warning"` · `"error"`
-
----
-
-## 📄 License
-
-See the [LICENSE](LICENSE) file for details.
