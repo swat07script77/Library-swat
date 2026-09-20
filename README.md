@@ -23,7 +23,9 @@
         ├── THEMES.md
         └── ICONS.md
 
-    HOW TO USE:
+    ════════════════════════════════════════════════════════════════
+        HOW TO USE
+    ════════════════════════════════════════════════════════════════
 
     1. Load the library:
         local SwatUI = loadstring(game:HttpGet("URL"))()
@@ -40,16 +42,117 @@
         AVAILABLE ELEMENTS
     ════════════════════════════════════════════════════════════════
 
-    ▸ CreateSection(title)
-    ▸ CreateLabel(text)
-    ▸ CreateButton(cfg)
-    ▸ CreateToggle(cfg)
-    ▸ CreateSlider(cfg)
-    ▸ CreateDropdown(cfg)
-    ▸ CreateTextBox(cfg)
-    ▸ CreateKeybind(cfg)
-    ▸ CreateColorPicker(cfg)
-    ▸ Window:Notify(cfg)
+    ┌──────────────────────────────────────────────────────────────┐
+    │  SECTION                                                     │
+    └──────────────────────────────────────────────────────────────┘
+
+        Tab:CreateSection("Title")
+
+    ┌──────────────────────────────────────────────────────────────┐
+    │  LABEL                                                       │
+    └──────────────────────────────────────────────────────────────┘
+
+        Tab:CreateLabel("Text")
+
+    ┌──────────────────────────────────────────────────────────────┐
+    │  BUTTON                                                      │
+    └──────────────────────────────────────────────────────────────┘
+
+        Tab:CreateButton({
+            Title = "Name",
+            Callback = function()
+                print("clicked")
+            end,
+        })
+
+    ┌──────────────────────────────────────────────────────────────┐
+    │  TOGGLE                                                      │
+    └──────────────────────────────────────────────────────────────┘
+
+        Tab:CreateToggle({
+            Title = "Name",
+            Default = false,
+            Callback = function(state)
+                print(state)
+            end,
+        })
+
+    ┌──────────────────────────────────────────────────────────────┐
+    │  SLIDER                                                      │
+    └──────────────────────────────────────────────────────────────┘
+
+        Tab:CreateSlider({
+            Title = "Name",
+            Min = 0,
+            Max = 100,
+            Default = 50,
+            Callback = function(value)
+                print(value)
+            end,
+        })
+
+    ┌──────────────────────────────────────────────────────────────┐
+    │  DROPDOWN                                                    │
+    └──────────────────────────────────────────────────────────────┘
+
+        Tab:CreateDropdown({
+            Title = "Name",
+            Options = {"A", "B", "C"},
+            Default = "A",
+            Callback = function(selected)
+                print(selected)
+            end,
+        })
+
+    ┌──────────────────────────────────────────────────────────────┐
+    │  TEXTBOX                                                     │
+    └──────────────────────────────────────────────────────────────┘
+
+        Tab:CreateTextBox({
+            Title = "Name",
+            Placeholder = "Type here...",
+            Default = "",
+            Callback = function(text)
+                print(text)
+            end,
+        })
+
+    ┌──────────────────────────────────────────────────────────────┐
+    │  KEYBIND                                                     │
+    └──────────────────────────────────────────────────────────────┘
+
+        Tab:CreateKeybind({
+            Title = "Name",
+            Default = "K",
+            Callback = function(key)
+                print(key)
+            end,
+        })
+
+    ┌──────────────────────────────────────────────────────────────┐
+    │  COLOR PICKER                                                │
+    └──────────────────────────────────────────────────────────────┘
+
+        Tab:CreateColorPicker({
+            Title = "Name",
+            Default = Color3.fromRGB(255, 0, 0),
+            Callback = function(color)
+                print(color)
+            end,
+        })
+
+    ┌──────────────────────────────────────────────────────────────┐
+    │  NOTIFY                                                      │
+    └──────────────────────────────────────────────────────────────┘
+
+        Window:Notify({
+            Title = "Title",
+            Description = "Description",
+            Duration = 3,
+            Type = "info",
+        })
+
+        Type: "info" | "success" | "warning" | "error"
 ]]
 
 local SwatUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/SEU_USUARIO/swatui/main/src/SwatUI.lua"))()
@@ -57,9 +160,6 @@ local SwatUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/SEU_US
 local Window = SwatUI:CreateWindow("All Elements")
 local lp = game.Players.LocalPlayer
 
--- ============================================================
--- TABS
--- ============================================================
 local MainTab   = Window:CreateTab("Main", "home")
 local ButtonTab = Window:CreateTab("Button", "circle-play")
 local ToggleTab = Window:CreateTab("Toggle", "check")
